@@ -41,9 +41,10 @@ const Navbar = (props) => {
 
   const [collapsed, setCollapsed] = useState(false)
   const getComponent = async () => {
-    await setUrl(document.location.href.slice(22))
+    await setUrl(document.location.href)
     return url
   }
+  console.log(url)
  
     getComponent()
   const {
@@ -116,7 +117,7 @@ const Navbar = (props) => {
               minHeight: 280,
             }}
           >
-            {!url.length ? <Home /> : url.length > 6 ? <Contact/> : url.startsWith("a") ? <About /> : <Kwaan/> }
+            {url.endsWith("/") ? <Home /> : url.endsWith("contact") ? <Contact/> : url.endsWith("about") ? <About /> : <Kwaan/> }
           </Content>
         </Layout>
       </Content>
